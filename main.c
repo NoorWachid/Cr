@@ -30,6 +30,8 @@ void cr_see(char* rpath) {
   while (rpath[i] != '\0') {
     spath[i] = rpath[i];
 
+    ++s;
+
     if (s == c) {
       spath = realloc(spath, c * sizeof(char));
       c *= 2;
