@@ -1,25 +1,32 @@
 # cr
-A nice wrapper to create files and directories
+A nice wrapper for creating files and directories
 
 ## Features
-- Short!
+- Short!  
   If you always doing `mkdir -p src/mylib` and then `touch src/mylib/mylib.{c,h}`.
   Now you can do it in a single command `cr src/mylib/mylib.{c,h}`
 
+## Install
+`$ git clone https://github.com/wachd/cr.git`
+
+`$ cd cr`
+
+`$ sudo make install`
+
 ## Usage
-- Create a file
+- Create a file  
   `$ cr myfile`
-- Create a directory
+- Create a directory  
   `$ cr mydir/`
-- Create a file and a directory
+- Create a file and a directory  
   `$ cr mydir/myfile`
-- Create multiple files
+- Create multiple files  
   `$ cr file1 file2`
-- Create multiple directories
+- Create multiple directories  
   `$ cr dir1/ dir2/`
-- Create nested directories
+- Create nested directories  
   `$ cr dir1/dir2/`
-- Create nested directories and file
+- Create nested directories and file  
   `$ cr dir1/dir2/file`
-- Create file with glob enable in your shell
+- Create file with glob enable in your shell  
   `$ cr src/{main,stack,string}.{c,h}`
