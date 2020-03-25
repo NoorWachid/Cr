@@ -24,7 +24,7 @@ int main(int rcount, char** rvector) {
 
 // comments are for noobs!
 void cr_see(char* rpath) {
-  size_t i = 0, c = 2, s = 0;
+  size_t i = 0, c = 64, s = 0;
   char *spath = malloc(sizeof(char) * c);
 
   while (rpath[i] != '\0') {
@@ -34,7 +34,7 @@ void cr_see(char* rpath) {
 
     if (s == c) {
       spath = realloc(spath, c * sizeof(char));
-      c *= 2;
+      c *= 1.5;
     }
 
     if (rpath[i] == '/') {
