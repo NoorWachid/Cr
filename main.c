@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <string.h>
 
 char* version = "2020.3.20";
-void cr_see(char* rpath);
+void CrSee(char* Path);
 
-// gnu coding style is bloated!
 int main(int rcount, char** rvector) {
   if (rcount == 1) {
     printf("usage: cr [file|directory/]\n");
@@ -14,44 +14,47 @@ int main(int rcount, char** rvector) {
   }
 
   if (rcount > 1) {
-    for (int i = 1; i < rcount; ++i) {
-      cr_see(rvector[i]);
+    for (int Index = 1; Index < rcount; ++Index) {
+      CrSee(rvector[Index]);
     }
   }
 
   return 0;
 }
 
-// comments are for noobs!
-void cr_see(char* rpath) {
-  size_t i = 0, c = 64, s = 0;
-  char *spath = malloc(sizeof(char) * c);
+void CrSee(char* Path) {
+  size_t Index    = 0, 
+         Capasity = 64, 
+         Size     = 0,
+         Length   = strlen(Path);
+  char *TmpPath   = malloc(sizeof(char) * Capasity);
 
-  while (rpath[i] != '\0') {
-    spath[i] = rpath[i];
+  while (Path[Index] != '\0') {
+    TmpPath[Index] = Path[Index];
 
-    ++s;
+    ++Size;
 
-    if (s == c) {
-      spath = realloc(spath, c * sizeof(char));
-      c *= 1.5;
+    if (Size == Capasity) {
+      TmpPath = realloc(TmpPath, Capasity * sizeof(char));
+      Capasity *= 1.5;
     }
 
-    if (rpath[i] == '/') {
-      mkdir(spath, 0700);
+    if (Path[Index] == '/') {
+      mkdir(TmpPath, 0700);
     }
 
-    ++i;
+    ++Index;
   }
 
-  // figure it out your self!
-  if (rpath[i - 1] != '/') {
-    if (access(rpath, F_OK)) {
-      FILE* pfile = fopen(rpath, "w");
-      fclose(pfile);
+  if (Path[Index - 1] != '/') {
+    // If it return 0 (file exists) do not do anything.
+    // If file not exists create new file.
+    if (access(Path, F_OK)) {
+      FILE* TmpFile = fopen(Path, "w");
+      fclose(TmpFile);
     }
   }
 
-  free(spath);
-  spath = 0;
+  free(TmpPath);
+  TmpPath = 0;
 }
