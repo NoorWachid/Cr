@@ -4,57 +4,59 @@
 #include <unistd.h>
 #include <string.h>
 
-char* version = "2020.3.20";
+char* Version = "2020.3.20";
 void CrSee(char* Path);
 
-int main(int rcount, char** rvector) {
-  if (rcount == 1) {
-    printf("usage: cr [file|directory/]\n");
-    printf("version: %s\n", version);
-  }
-
-  if (rcount > 1) {
-    for (int Index = 1; Index < rcount; ++Index) {
-      CrSee(rvector[Index]);
+int main(int ArgCount, char** ArgVector) {
+    if (ArgCount == 1) {
+        printf("usage: cr [file|directory/]\n");
+        printf("version: %s\n", Version);
     }
-  }
 
-  return 0;
+    if (ArgCount > 1) {
+        for (int Index = 1; Index < ArgCount; ++Index) {
+            CrSee(ArgVector[Index]);
+        }
+    }
+
+    return 0;
 }
 
 void CrSee(char* Path) {
-  size_t Index    = 0, 
-         Capasity = 64, 
-         Size     = 0,
-         Length   = strlen(Path);
-  char *TmpPath   = malloc(sizeof(char) * Capasity);
+    size_t Index    = 0, 
+           Capasity = 64, 
+           Size     = 0,
+           Length   = strlen(Path);
+    char* TmpPath   = malloc(sizeof(char) * Capasity);
 
-  while (Path[Index] != '\0') {
-    TmpPath[Index] = Path[Index];
+    while (Index < Length) {
+        TmpPath[Index] = Path[Index];
 
-    ++Size;
+        ++Size;
 
-    if (Size == Capasity) {
-      TmpPath = realloc(TmpPath, Capasity * sizeof(char));
-      Capasity *= 1.5;
+        if (Size > Capasity - 2) {
+            Capasity *= 1.5;
+            TmpPath   = realloc(TmpPath, Capasity * sizeof(char));
+        }
+
+        if (Path[Index] == '/') {
+            // Add null terminator.
+            TmpPath[Index + 1] = '\0';
+            mkdir(TmpPath, 0700);
+        }
+
+        ++Index;
     }
 
-    if (Path[Index] == '/') {
-      mkdir(TmpPath, 0700);
+    if (Path[Index - 1] != '/') {
+        // If it return 0 (file exists) do not do anything.
+        // If file not exists create new file.
+        if (access(Path, F_OK)) {
+            FILE* TmpFile = fopen(Path, "w");
+            fclose(TmpFile);
+        }
     }
 
-    ++Index;
-  }
-
-  if (Path[Index - 1] != '/') {
-    // If it return 0 (file exists) do not do anything.
-    // If file not exists create new file.
-    if (access(Path, F_OK)) {
-      FILE* TmpFile = fopen(Path, "w");
-      fclose(TmpFile);
-    }
-  }
-
-  free(TmpPath);
-  TmpPath = 0;
+    free(TmpPath);
+    TmpPath = 0;
 }
