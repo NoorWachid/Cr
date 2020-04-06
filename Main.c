@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <string.h>
 
-char* Version = "2020.3.20";
+char* Version = "2020.4.6";
 void CrSee(char* Path);
 
 int main(int ArgCount, char** ArgVector) {
