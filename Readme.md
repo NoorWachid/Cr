@@ -1,5 +1,5 @@
 # cr
-A nice wrapper for creating files and directories
+A nice wrapper for creating files and recursive directories
 
 ## Features
 - Short!  
