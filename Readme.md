@@ -13,11 +13,31 @@ A nice wrapper for creating files and directories
 
 `$ sudo make install`
 
+## Practical usage
+```shell
+# Create a directory and cd to it
+# rcd tmp/Testing/SomethingDangerous
+rcd() {
+    cd `cr -dr $1`
+}
+
+# Create a file and edit it
+# rvi Projects/NewProject/MyLib{c,h}
+rvi() {
+    vi `cr -f $1`
+}
+
+```
+
+## Wierd stuff
+`$ cr -dr somedir -n somefile somediragain/`
+
 ## Usage
 - Create a file  
   `$ cr myfile`
 - Create a directory  
-  `$ cr mydir/`
+  `$ cr mydir/`  
+  `$ cr -r mydir`
 - Create a file and a directory  
   `$ cr mydir/myfile`
 - Create multiple files  

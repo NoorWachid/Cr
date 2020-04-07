@@ -1,4 +1,6 @@
 all: compile
+debug:
+	gcc -Wall -Werror -g -o cr Main.c
 compile:
 	gcc -Wall -Werror -O2 -o cr Main.c
 install: all
