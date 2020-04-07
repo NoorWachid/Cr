@@ -32,6 +32,16 @@ rvi() {
 ## Wierd stuff
 `$ cr -dr somedir -n somefile somediragain/`
 
+## Flags
+- `v` version
+- `h` help
+- `r` directory mode
+- `n` normal mode
+- `o` print output
+- `d` print output directory only
+- `f` print output file only
+- `s` silent the output
+
 ## Usage
 - Create a file  
   `$ cr myfile`

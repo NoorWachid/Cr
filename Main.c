@@ -137,15 +137,20 @@ void CrArg(char* Arg, ROptions* Options) {
 
 void CrHelp() {
     printf("Flags:\n" 
-            "  -v version\n"
-            "  -h help\n"
-            "  -o print output\n"
-            "\n"
-            "Usage:\n"
-            "  cr file.txt\n"
-            "  cr dir/\n"
-            "  cr dir/file.txt\n"
-            "\n"
-            "Note: see man cr for more details.\n");
+        "  -v version\n"
+        "  -h help\n"
+        "  -r directory mode\n"
+        "  -n normal mode\n"
+        "  -o print output\n"
+        "  -d print output directory only\n"
+        "  -f print output file only\n"
+        "  -s silent the output\n"
+        "\n"
+        "Usage:\n"
+        "  cr file.txt\n"
+        "  cr dir/\n"
+        "  cr dir/file.txt\n"
+        "\n"
+        "Note: see man cr for more details.\n");
 }
 
