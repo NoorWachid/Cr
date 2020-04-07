@@ -1,4 +1,4 @@
-# cr
+# Cr
 A nice wrapper for creating files and recursive directories
 
 ## Features
