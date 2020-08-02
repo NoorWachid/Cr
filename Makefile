@@ -2,7 +2,7 @@ all: compile
 debug:
 	gcc -Wall -Werror -g -o cr EntryPn.c
 compile:
-	gcc -O2 -o cr EntryPn.c
+	gcc -O2 -o cr EntryPoint.c
 install: all
 	cp cr /usr/bin/cr
 	cp cr.1 /usr/share/man/man1/cr.1
