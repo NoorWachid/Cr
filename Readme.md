@@ -1,6 +1,8 @@
 # Cr
 A nice wrapper for creating files and recursive directories
 
+[STILL IN ALPHA STAGE DONOT USE IT TO MODIFY ROOT BASED ACCESS]
+
 ## Features
 - Short!  
   If you always doing `mkdir -p src/mylib` and then `touch src/mylib/mylib.{c,h}`.
